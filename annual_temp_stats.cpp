@@ -45,6 +45,33 @@ double averageLow(double data[N][2])
     return (total / 12);
 }
 
+int indexHighTemp(double data[N][2])
+{
+    int indexHigh = 0;
+    int j = 0;
+    for (int i = 1; i <= 12; i++)
+    {
+
+        if (data[i][1] > data[i - j][1])
+        {
+            if (i == 12)
+            {
+                return i;
+            }
+            j = 1;
+        }
+        else
+        {
+            if (i == 12)
+            {
+                return i - j;
+            }
+            j += 1;
+        }
+    }
+    return 0;
+}
+
 int main()
 {
     int max_month, min_month, k, month_index[N];
@@ -74,10 +101,12 @@ int main()
     getData(rainfall_data_low, rainfall_data_high, total_data, month_index);
     avgH = averageHigh(total_data);
     avgL = averageLow(total_data);
+    max_month = indexHighTemp(total_data);
+    // min_month =
     cout << total_data[1][0] << endl
          << total_data[1][1] << endl
-         << avgH << endl
-         << avgL;
+         //  << avgH << endl
+         << total_data[max_month][1];
     cout << endl
          << endl;
 }
