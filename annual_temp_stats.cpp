@@ -37,6 +37,9 @@ void getData(double rain_data_low[N], double rain_data_high[N],
     }
 }
 
+double averageHigh(double tot_data[N][3])
+{
+}
 int main()
 {
     int max_month, min_month, k;
