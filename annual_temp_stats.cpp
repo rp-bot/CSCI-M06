@@ -14,55 +14,59 @@
 using namespace std;
 const int N = 13;
 
-// double **getData(double low_data[13], double high_data[13])
-// {
-//     static double **get_data[N][2];
-
-//     for (int i = 1; i <= 12; i++)
-//     {
-//         get_data[i][0] = low_data[i];
-//         get_data[i][1] = high_data[i];
-//     }
-//     return get_data;
-// }
-
 void getData(double rain_data_low[N], double rain_data_high[N],
-             double tot_data[N][3])
+             double tot_data[N][2], int m_index[N])
 {
     for (int i = 1; i <= 12; i++)
     {
-        tot_data[i][0] = i;
-        tot_data[i][1] = rain_data_low[i];
-        tot_data[i][2] = rain_data_high[i];
+        m_index[i] = i;
+        tot_data[i][0] = rain_data_low[i];
+        tot_data[i][1] = rain_data_high[i];
     }
 }
 
-double averageHigh(double tot_data[N][3])
+double averageHigh(double data[N][2])
 {
+    double total;
+    for (int i = 1; i <= 12; i++)
+    {
+        total += data[i][1];
+    }
+    return (total / 12);
 }
+
 int main()
 {
-    int max_month, min_month, k;
-    double rainfall_data_low[N], rainfall_data_high[N], total_data[N][3];
+    int max_month, min_month, k, month_index[N];
+    double rainfall_data_low[N], rainfall_data_high[N], total_data[N][2];
+    double avgH;
     string month[N] = {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
-    cout << "enter the HIGH and LOW temperatures for each month" << endl;
+    cout << "enter the LOW and HIGH temperatures for each month" << endl;
     cout << setw(7) << "Month:"
          << "    "
-         << "H,L" << endl;
+         << "L,H" << endl;
     for (int i = 1; i <= 12; i++)
     {
         cout << setw(6) << month[i] << ":    ";
         char comma;
         cin >> rainfall_data_low[i] >> comma >> rainfall_data_high[i];
+
+        if (rainfall_data_low[i] > rainfall_data_high[i])
+        {
+            double temp = rainfall_data_high[i];
+            rainfall_data_high[i] = rainfall_data_low[i];
+            rainfall_data_low[i] = temp;
+        }
     }
 
-    getData(rainfall_data_low, rainfall_data_high, total_data);
-
+    getData(rainfall_data_low, rainfall_data_high, total_data, month_index);
+    avgH = averageHigh(total_data);
+    // avgL =
     cout << total_data[1][0] << endl
          << total_data[1][1] << endl
-         << total_data[1][2];
+         << avgH;
     cout << endl
          << endl;
 }
