@@ -12,26 +12,45 @@
 #include <algorithm>
 
 using namespace std;
+const int N = 13;
+
+// double **getData(double low_data[13], double high_data[13])
+// {
+//     static double **get_data[N][2];
+
+//     for (int i = 1; i <= 12; i++)
+//     {
+//         get_data[i][0] = low_data[i];
+//         get_data[i][1] = high_data[i];
+//     }
+//     return get_data;
+// }
 
 int main()
 {
     int max_month, min_month, k;
+    double rainfall_data_low[N], rainfall_data_high[N], total_data[N][3];
+    string month[N] = {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                       "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
-    double rainfall_data_low[13], rainfall_data_high[13];
-    static string month[2][13] = {
-        {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"},
-        {"", "", "", "", "", "", "",
-         "", "", "", "", "", ""}};
     cout << "enter the HIGH and LOW temperatures for each month" << endl;
     cout << setw(7) << "Month:"
          << "    "
          << "H,L" << endl;
     for (int i = 1; i <= 12; i++)
     {
-        cout << setw(6) << month[0][i] << ":    ";
-        int j = 0;
+        cout << setw(6) << month[i] << ":    ";
         char comma;
         cin >> rainfall_data_low[i] >> comma >> rainfall_data_high[i];
     }
+
+    for (int i = 1; i <= 12; i++)
+    {
+        total_data[i][0] = i;
+        total_data[i][1] = rainfall_data_low[i];
+        total_data[i][2] = rainfall_data_high[i];
+    }
+
+    cout << endl
+         << endl;
 }
