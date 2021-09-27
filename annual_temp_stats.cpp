@@ -26,6 +26,17 @@ const int N = 13;
 //     return get_data;
 // }
 
+void getData(double rain_data_low[N], double rain_data_high[N])
+{
+    double total_data[N][3];
+    for (int i = 1; i <= 12; i++)
+    {
+        total_data[i][0] = i;
+        total_data[i][1] = rainfall_data_low[i];
+        total_data[i][2] = rainfall_data_high[i];
+    }
+}
+
 int main()
 {
     int max_month, min_month, k;
@@ -42,13 +53,6 @@ int main()
         cout << setw(6) << month[i] << ":    ";
         char comma;
         cin >> rainfall_data_low[i] >> comma >> rainfall_data_high[i];
-    }
-
-    for (int i = 1; i <= 12; i++)
-    {
-        total_data[i][0] = i;
-        total_data[i][1] = rainfall_data_low[i];
-        total_data[i][2] = rainfall_data_high[i];
     }
 
     cout << endl
