@@ -55,6 +55,8 @@ int main()
         cin >> rainfall_data_low[i] >> comma >> rainfall_data_high[i];
     }
 
+    getData(rainfall_data_low, rainfall_data_high);
+
     cout << endl
          << endl;
 }
