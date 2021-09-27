@@ -13,6 +13,10 @@
 
 using namespace std;
 
+double getData()
+{
+}
+
 int main()
 {
     int max_month, min_month, k;
