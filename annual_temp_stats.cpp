@@ -71,7 +71,32 @@ int indexHighTemp(double data[N][2])
     }
     return 0;
 }
+int indexLowTemp(double data[N][2])
+{
+    int indexLow = 0;
+    int j = 0;
+    for (int i = 1; i <= 12; i++)
+    {
 
+        if (data[i][1] > data[i - j][1])
+        {
+            if (i == 12)
+            {
+                return i;
+            }
+            j = 1;
+        }
+        else
+        {
+            if (i == 12)
+            {
+                return i - j;
+            }
+            j += 1;
+        }
+    }
+    return 0;
+}
 int main()
 {
     int max_month, min_month, k, month_index[N];
