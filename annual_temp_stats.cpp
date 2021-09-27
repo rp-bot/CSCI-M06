@@ -27,10 +27,20 @@ void getData(double rain_data_low[N], double rain_data_high[N],
 
 double averageHigh(double data[N][2])
 {
-    double total;
+    double total = 0;
     for (int i = 1; i <= 12; i++)
     {
         total += data[i][1];
+    }
+    return (total / 12);
+}
+
+double averageLow(double data[N][2])
+{
+    double total = 0;
+    for (int i = 1; i <= 12; i++)
+    {
+        total += data[i][0];
     }
     return (total / 12);
 }
@@ -39,7 +49,7 @@ int main()
 {
     int max_month, min_month, k, month_index[N];
     double rainfall_data_low[N], rainfall_data_high[N], total_data[N][2];
-    double avgH;
+    double avgH, avgL;
     string month[N] = {"", "Jan", "Feb", "Mar", "Apr", "May", "Jun",
                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
@@ -63,10 +73,11 @@ int main()
 
     getData(rainfall_data_low, rainfall_data_high, total_data, month_index);
     avgH = averageHigh(total_data);
-    // avgL =
+    avgL = averageLow(total_data);
     cout << total_data[1][0] << endl
          << total_data[1][1] << endl
-         << avgH;
+         << avgH << endl
+         << avgL;
     cout << endl
          << endl;
 }
