@@ -77,8 +77,7 @@ int indexLowTemp(double data[N][2])
     int j = 0;
     for (int i = 1; i <= 12; i++)
     {
-
-        if (data[i][1] > data[i - j][1])
+        if (data[i][0] < data[i - j][0])
         {
             if (i == 12)
             {
@@ -127,10 +126,10 @@ int main()
     avgH = averageHigh(total_data);
     avgL = averageLow(total_data);
     max_month = indexHighTemp(total_data);
-    // min_month =
+    min_month = indexLowTemp(total_data);
     cout << total_data[1][0] << endl
          << total_data[1][1] << endl
-         //  << avgH << endl
+         << total_data[min_month][0] << endl
          << total_data[max_month][1];
     cout << endl
          << endl;
