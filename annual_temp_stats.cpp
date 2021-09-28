@@ -9,7 +9,6 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include <algorithm>
 
 using namespace std;
 const int N = 13;
