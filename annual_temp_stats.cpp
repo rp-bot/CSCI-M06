@@ -107,7 +107,9 @@ int main()
     cout << "enter the LOW and HIGH temperatures for each month" << endl;
     cout << setw(7) << "Month:"
          << "    "
-         << "L,H" << endl;
+         << "L,H"
+         << endl
+         << endl;
     for (int i = 1; i <= 12; i++)
     {
         cout << setw(6) << month[i] << ":    ";
@@ -127,9 +129,16 @@ int main()
     avgL = averageLow(total_data);
     max_month = indexHighTemp(total_data);
     min_month = indexLowTemp(total_data);
-    cout << total_data[1][0] << endl
-         << total_data[1][1] << endl
-         << total_data[min_month][0] << endl
+    cout << endl
+         << " Average of Low temps   : " << avgL << endl
+         << " Average of High temps  : " << avgH << endl
+         << endl
+         << " Lowest temperature     :" << endl
+         << setw(23) << month[min_month] << " : "
+         << total_data[min_month][0]
+         << endl
+         << " Highest temperature    :" << endl
+         << setw(23) << month[max_month] << " : "
          << total_data[max_month][1];
     cout << endl
          << endl;
